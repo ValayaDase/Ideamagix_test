@@ -1,0 +1,104 @@
+.doctor-main {
+  display: flex;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.doctor-sidebar {
+  width: 220px;
+  background-color: #1d1f20;
+  padding: 20px;
+  color: white;
+}
+
+.doctor-sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.doctor-sidebar button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #c9c3c3;
+  color: black;
+  border: none;
+  cursor: pointer;
+}
+
+.doctor-sidebar button:hover {
+  background-color: #b1abab;
+}
+
+.doctor-content {
+  flex: 1;
+  padding: 30px;
+    width: 100%;
+  background-color: #f2f2f2;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  width: 850px;
+}
+
+.doctor-info {
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.doctor-details p {
+  margin: 10px 0;
+  font-size: 18px;
+}
+
+.doctor-profile img {
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.consultation-list {
+  margin-top: 20px;
+}
+
+.consultation-card {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.consultation-card h2 {
+  margin-bottom: 10px;
+}
+
+.consultation-card p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.consult-date {
+  margin-top: 8px;
+  font-size: 12px;
+  color: gray;
+}
+
+.patient-card button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  background-color: #222323;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.patient-card button:hover {
+  background-color: #434445;
+}
