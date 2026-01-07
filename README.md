@@ -41,7 +41,7 @@ A full-stack web application for managing patient-doctor consultations.
 
 ## 📁 Project Structure
 
-
+```
 Ideamagix_test/
 ├── frontend/
 │   └── my-app/
@@ -79,7 +79,7 @@ Ideamagix_test/
     ├── server.js
     |__ .env
     └── package. json
-
+```
 
 ## 🚀 Getting Started
 
