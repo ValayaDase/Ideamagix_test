@@ -16,6 +16,7 @@ function PatientDashboard() {
   const [showModal, setShowModal] = useState(false);
   const [doctorName, setDoctorName] = useState("");
   const [selectedDoctorId, setSelectedDoctorId] = useState(null);
+  const [prescriptions, setPrescriptions] = useState([]);
 
   const [step, setStep] = useState(1);
 
@@ -60,6 +61,15 @@ function PatientDashboard() {
       .catch((err) => {
         console.log(err);
       });
+
+    // fetch prescription details
+    axios
+    .get(`http://localhost:5000/consultation/patient/${patientFromState._id}`)
+    .then((res) => {
+      setPrescriptions(res.data.consultations);
+    })
+    .catch((err) => console.log(err));
+
   }, [patientFromState, navigate]);
 
   const submitConsultation = () => {
@@ -84,6 +94,7 @@ function PatientDashboard() {
         <h2>Patient</h2>
         <button onClick={() => setPage("dashboard")}>Dashboard</button>
         <button onClick={() => setPage("doctors")}>Doctors</button>
+        <button onClick={()=> setPage("prescriptions")}>Prescriptions</button>
         <button onClick={logout}>Logout</button>
       </div>
 
@@ -128,7 +139,7 @@ function PatientDashboard() {
 
             <div className="doctor-list">
               {doctors.map((doc) => (
-                <div className="doctor-card" key={doc._id}>
+                <div className="patient-doctor-card" key={doc._id}>
                   <div className="doctor-profile">
                     {doc.profilePhoto ? (
                       <img
@@ -139,7 +150,7 @@ function PatientDashboard() {
                     ) : (<p>No profile photo</p>)
                     }
                   </div>
-                  <div className="doctor-info">
+                  <div className="patient-doctor-info">
                     <h3>Dr. {doc.name}</h3>
                     <p>Speciality: {doc.speciality}</p>
                     <p>Experience: {doc.experience} yr</p>
@@ -156,6 +167,27 @@ function PatientDashboard() {
                 </div>
               ))}
             </div>
+          </div>
+        )}
+
+        {page === "prescriptions" && (
+          <div className="box">
+            <h2>My Prescriptions</h2>
+
+            {prescriptions.length === 0 ? (
+              <p>No prescriptions yet</p>
+            ) : (
+              prescriptions.map((c) => (
+                <div key={c._id} style={{ marginBottom: "15px" }}>
+                  <h3>Dr. {c.doctorId?.name}</h3>
+
+                  <p>
+                    <b>Prescription:</b> {c.prescription}
+                  </p>
+
+                </div>
+              ))
+            )}
           </div>
         )}
       </div>

@@ -38,6 +38,9 @@ const consultationSchema = new mongoose.Schema(
 
     others: {
       type: String
+    },
+    prescription:{
+      type : String
     }
   },
   {

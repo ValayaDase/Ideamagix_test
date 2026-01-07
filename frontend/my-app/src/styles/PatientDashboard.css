@@ -68,11 +68,11 @@
   width: 100%;
 }
 
-.doctor-info {
+.patient-doctor-info {
   padding: 20px;
 }
 
-.doctor-card {
+.patient-doctor-card {
   background: white;
   padding: 15px;
   width: 200px;

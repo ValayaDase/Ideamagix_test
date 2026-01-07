@@ -1,0 +1,73 @@
+.consult-modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+
+.consult-modal {
+  background-color: white;
+  width: 450px;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+}
+
+
+.consult-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+.consult-modal h3 {
+  margin-bottom: 15px;
+}
+
+
+.consult-patient-name {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.consult-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+
+
+.consult-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+
+.consult-btns button {
+  width: 120px;
+  padding: 8px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.consult-btns button:hover {
+  background-color: #444;
+}

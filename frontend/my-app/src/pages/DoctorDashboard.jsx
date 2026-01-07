@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect , useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/DoctorDashboard.css";
+import Consultation from "./Consultation";
 
 
 function DoctorDashboard(){
@@ -14,7 +15,8 @@ function DoctorDashboard(){
     const [patients , setPatients] = useState([])
 
     const [consultations, setConsultations] = useState([]);
-
+    const [showPrescriptionModal, setShowPrescriptionModal] = useState(false);
+    const [selectedConsultation, setSelectedConsultation] = useState(null);
 
     const [page , setPage] = useState("dashboard");
 
@@ -53,14 +55,14 @@ function DoctorDashboard(){
 
     return(
         <div className="doctor-main">
-            {/* Sidebar */}
+
             <div className="doctor-sidebar">
                 <h2>Dr. {doctor?.name}</h2>
                 <button onClick={()=>setPage("dashboard")}>Dashboard</button>
                 <button onClick={()=>setPage("patients")}>Patients</button>
                 <button onClick={logout}>Logout</button>
             </div>
-            {/* Main Content */}
+
             <div className="doctor-content">
                 {page === "dashboard" && (
           <div className="box">
@@ -105,10 +107,8 @@ function DoctorDashboard(){
                     {consultations.map((c) => (
                       <div className="consultation-card" key={c._id}>
                         
-                        {/* Patient Name */}
                         <h2>{c.patientId?.name}</h2>
 
-                        {/* Consultation Details */}
                         <p><b>Illness History:</b> {c.illnessHistory}</p>
                         <p><b>Surgery History:</b> {c.surgeryHistory || "No"}</p>
                         <p><b>Surgery Time:</b> {c.surgeryTime || "N/A"}</p>
@@ -116,10 +116,14 @@ function DoctorDashboard(){
                         <p><b>Allergies:</b> {c.allergies || "No"}</p>
                         <p><b>Other Issues:</b> {c.others || "No"}</p>
 
-                        <p className="consult-date">
-                          <b>Date:</b> {new Date(c.createdAt).toLocaleDateString()}
-                        </p>
-
+                        <button
+                          onClick={() => {
+                            setSelectedConsultation(c);
+                            setShowPrescriptionModal(true);
+                          }}
+                        >
+                          Give Prescription
+                        </button>
                       </div>
                     ))}
                   </div>
@@ -127,7 +131,13 @@ function DoctorDashboard(){
               </div>
             )}
 
-            </div>
+          </div>
+          {showPrescriptionModal && selectedConsultation && (
+            <Consultation
+              consultation={selectedConsultation}
+              setShowPrescriptionModal={setShowPrescriptionModal}
+            />
+          )}
         </div>
     )
 }

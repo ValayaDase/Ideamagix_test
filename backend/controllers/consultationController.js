@@ -48,3 +48,33 @@ export const getConsultations = async (req, res) => {
     });
   }
 };
+
+export const addPrescription = async (req, res) => {
+  try {
+    const { prescription } = req.body;
+
+    await Consultation.findByIdAndUpdate(
+      req.params.consultationId,
+      { prescription }
+    );
+
+    res.json({ message: "Prescription saved" });
+  } catch (err) {
+    res.status(500).json({ message: "Error saving prescription" });
+  }
+};
+
+export const getPatientPrescriptions = async (req, res) => {
+  try {
+    const { patientId } = req.params;
+
+    const consultations = await Consultation.find({
+      patientId,
+      prescription: { $exists: true, $ne: "" }
+    }).populate("doctorId", "name");
+
+    res.json({ consultations });
+  } catch (err) {
+    res.status(500).json({ message: "Error fetching prescriptions" });
+  }
+};
