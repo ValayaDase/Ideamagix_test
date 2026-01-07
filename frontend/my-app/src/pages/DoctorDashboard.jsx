@@ -86,7 +86,7 @@ function DoctorDashboard(){
                             </div>
                             <div className="doctor-profile">
                             {doctor?.profilePhoto ? (
-                                <img src={`http://localhost:5000/${doctor.profilePhoto}`} alt="Profile" />
+                                <img src={`${API_URL}/${doctor.profilePhoto}`} alt="Profile" />
                             ) : (
                                 <p>No profile photo</p>
                             )}

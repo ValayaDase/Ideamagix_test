@@ -123,7 +123,7 @@ function PatientDashboard() {
                     </div>
                     <div className="patient-profile">
                       {patient.profilePhoto ? (
-                        <img src={`http://localhost:5000/${patient.profilePhoto}`} alt="Profile" />
+                        <img src={`${API_URL}/${patient.profilePhoto}`} alt="Profile" />
                       ) : (
                         <p>No profile photo</p>
                       )}
@@ -144,7 +144,7 @@ function PatientDashboard() {
                   <div className="doctor-profile">
                     {doc.profilePhoto ? (
                       <img
-                        src={`http://localhost:5000/${doc.profilePhoto}`}
+                        src={`${API_URL}/${doc.profilePhoto}`}
                         alt="Doctor Profile"
                         className="doctor-profile-pic"
                       />
