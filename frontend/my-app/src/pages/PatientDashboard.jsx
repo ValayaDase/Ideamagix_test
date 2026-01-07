@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../styles/PatientDashboard.css";
+import API_URL from "../config/api";
 
 function PatientDashboard() {
   const location = useLocation();
@@ -44,7 +45,7 @@ function PatientDashboard() {
 
     // fetch patient details
     axios
-      .get(`http://localhost:5000/patient/details/${patientFromState._id}`)
+      .get(`${API_URL}/patient/details/${patientFromState._id}`)
       .then((res) => {
         setPatient(res.data.patient);
       })
@@ -54,7 +55,7 @@ function PatientDashboard() {
 
     // fetch doctors list
     axios
-      .get("http://localhost:5000/doctor/all")
+      .get(`${API_URL}/doctor/all`)
       .then((res) => {
         setDoctors(res.data.doctors);
       })
@@ -64,7 +65,7 @@ function PatientDashboard() {
 
     // fetch prescription details
     axios
-    .get(`http://localhost:5000/consultation/patient/${patientFromState._id}`)
+    .get(`${API_URL}/consultation/patient/${patientFromState._id}`)
     .then((res) => {
       setPrescriptions(res.data.consultations);
     })
@@ -73,7 +74,7 @@ function PatientDashboard() {
   }, [patientFromState, navigate]);
 
   const submitConsultation = () => {
-    axios.post("http://localhost:5000/consultation/add", {
+    axios.post(`${API_URL}/consultation/add`, {
       patientId: patient._id,
       doctorId: selectedDoctorId, 
       ...consultationData

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "../styles/Auth.css";
+import API_URL from "../config/api";
 function PatientSignup(){
 
     const navigate = useNavigate();
@@ -33,7 +34,7 @@ function PatientSignup(){
 
         console.log(form);
         try{
-            const res = await axios.post("http://localhost:5000/patient/register",data,
+            const res = await axios.post(`${API_URL}/patient/register`,data,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data'

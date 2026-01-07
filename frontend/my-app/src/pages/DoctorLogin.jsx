@@ -3,6 +3,7 @@ import "../styles/Auth.css";
 import axios from "axios";
 import { use, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../config/api";
 
 function DoctorLogin(){
     const [email , setEmail] = useState("");
@@ -13,7 +14,7 @@ function DoctorLogin(){
     const handleLogin = async (e)=>{
         e.preventDefault();
         try{
-            const res = await axios.post("http://localhost:5000/doctor/login",{
+            const res = await axios.post(`${API_URL}/doctor/login`,{
             email,
             password
         })

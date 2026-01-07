@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate , Link } from "react-router-dom";
 import "../styles/Auth.css";
 import axios from "axios";
+import API_URL from "../config/api";
 
 function PatientLogin(){
 
@@ -13,7 +14,7 @@ function PatientLogin(){
     const handleLogin = async (e)=>{
         e.preventDefault();
         try{
-            const res = await axios.post("http://localhost:5000/patient/login",{
+            const res = await axios.post(`${API_URL}/patient/login`,{
             email,
             password
         })

@@ -3,6 +3,7 @@ import { useEffect , useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/DoctorDashboard.css";
 import Consultation from "./Consultation";
+import API_URL from "../config/api";
 
 
 function DoctorDashboard(){
@@ -33,7 +34,7 @@ function DoctorDashboard(){
 
         // fetch doctor details
         axios
-         .get(`http://localhost:5000/doctor/details/${doctorFromState._id}`)
+         .get(`${API_URL}/doctor/details/${doctorFromState._id}`)
          .then((res)=>{
             setDoctor(res.data.doctor)
          })
@@ -43,7 +44,7 @@ function DoctorDashboard(){
 
         // fetch consultations list
         axios
-        .get(`http://localhost:5000/consultation/all/${doctorFromState._id}`)
+        .get(`${API_URL}/consultation/all/${doctorFromState._id}`)
         .then((res) => {
           setConsultations(res.data.consultations);
         })

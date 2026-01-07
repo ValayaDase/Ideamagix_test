@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import "../styles/Consultation.css"; // optional
+import "../styles/Consultation.css";
+import API_URL from "../config/api";
 
 function Consultation({ consultation, setShowPrescriptionModal, refreshConsultations }) {
 
@@ -11,7 +12,7 @@ function Consultation({ consultation, setShowPrescriptionModal, refreshConsultat
   const submitPrescription = () => {
     axios
       .put(
-        `http://localhost:5000/consultation/prescription/${consultation._id}`,
+        `${API_URL}/consultation/prescription/${consultation._id}`,
         { prescription }
       )
       .then(() => {
